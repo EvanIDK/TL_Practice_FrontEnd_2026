@@ -1,11 +1,4 @@
-.currency-selects {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  margin-block-start: 27px;
-}
-
-.currency-select {
+.wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,6 +9,13 @@
 
   border: 1px solid #d9d9d9;
   border-radius: 6px;
+}
+
+.selects {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-block-start: 27px;
 }
 
 .input {

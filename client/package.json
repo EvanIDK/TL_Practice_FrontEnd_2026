@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
+    "test": "vitest",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint src --ext .ts,.tsx",
     "lint:stylelint": "stylelint src/**/*.scss",
@@ -16,10 +17,15 @@
     "prettier:write": "prettier --write \"**/*.{ts,tsx,js,jsx,json,scss,css,html,md}\""
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.37.5",
+    "jsdom": "^29.1.1",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "vitest": "^4.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

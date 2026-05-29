@@ -1,15 +1,15 @@
 import styles from './App.module.scss';
 
-import ConversionHeader from './components/ConversionHeader/ConversionHeader.tsx';
-import CurrencySelect from './components/CurrencySelect/CurrencySelect.tsx';
-import MoreAbout from './components/MoreAbout/MoreAbout.tsx';
+import { ConversionHeader } from './components/ConversionHeader/ConversionHeader.tsx';
+import { CurrencySelect } from './components/CurrencySelect/CurrencySelect.tsx';
+import { MoreAbout } from './components/MoreAbout/MoreAbout.tsx';
 
 function App() {
   return (
-    <div className={styles['page-wrapper']}>
-      <div className={styles['app-container']}>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
         <ConversionHeader />
-        <div className={styles['currency-selects']}>
+        <div className={styles.selects}>
           <CurrencySelect amount={1} currency="PLN" />
           <CurrencySelect amount={1} currency="JPY" />
         </div>

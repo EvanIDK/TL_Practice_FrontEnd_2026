@@ -1,11 +1,14 @@
 import styles from './MoreAbout.module.scss';
 
-function MoreAboutButton(props: { currencyFrom: string; currencyTo: string }) {
+type MoreAboutButtonProps = {
+  currencyFrom: string;
+  currencyTo: string;
+};
+
+export const MoreAboutButton = ({ currencyFrom, currencyTo }: MoreAboutButtonProps) => {
   return (
     <a className={styles.button} href="#">
-      {props.currencyFrom}/{props.currencyTo}: about
+      {currencyFrom}/{currencyTo}: about
     </a>
   );
-}
-
-export default MoreAboutButton;
+};

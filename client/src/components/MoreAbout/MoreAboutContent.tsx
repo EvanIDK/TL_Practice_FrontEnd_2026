@@ -1,12 +1,15 @@
 import styles from './MoreAbout.module.scss';
 
-function MoreAboutContent(props: { title: string; text: string }) {
+type MoreAboutContentProps = {
+  title: string;
+  text: string;
+};
+
+export const MoreAboutContent = ({ title, text }: MoreAboutContentProps) => {
   return (
     <div className={styles.content}>
-      <h3 className={styles.title}>{props.title}</h3>
-      <p className={styles.text}>{props.text}</p>
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.text}>{text}</p>
     </div>
   );
-}
-
-export default MoreAboutContent;
+};

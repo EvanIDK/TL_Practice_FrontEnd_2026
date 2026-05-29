@@ -1,14 +1,19 @@
 import styles from './CurrencySelect.module.scss';
 
-function CurrencySelect(props: { amount: number; currency: string }) {
+type CurrencySelectProps = {
+  amount: number;
+  currency: string;
+};
+
+export const CurrencySelect = ({ amount, currency }: CurrencySelectProps) => {
   return (
-    <div className={styles['currency-select']}>
-      <input className={styles.input} type="number" defaultValue={props.amount} name={`amount-${props.currency}`} />
+    <div className={styles.wrapper}>
+      <input className={styles.input} type="number" defaultValue={amount} name={`amount-${currency}`} />
       <select
         className={styles.select}
-        name={`currency-${props.currency}`}
-        id={`currency-${props.currency}`}
-        defaultValue={props.currency}
+        name={`currency-${currency}`}
+        id={`currency-${currency}`}
+        defaultValue={currency}
       >
         <option value="USD">USD</option>
         <option value="RUB">RUB</option>
@@ -17,6 +22,4 @@ function CurrencySelect(props: { amount: number; currency: string }) {
       </select>
     </div>
   );
-}
-
-export default CurrencySelect;
+};
