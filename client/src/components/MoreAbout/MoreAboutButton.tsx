@@ -1,11 +1,8 @@
 import styles from './MoreAbout.module.scss';
 
-function MoreAboutButton(props: {
-  currencyFrom: string;
-  currencyTo: string;
-}) {
+function MoreAboutButton(props: { currencyFrom: string; currencyTo: string }) {
   return (
-    <a className={styles['more-about__button']} href="#">
+    <a className={styles.button} href="#">
       {props.currencyFrom}/{props.currencyTo}: about
     </a>
   );

@@ -12,10 +12,7 @@ function MoreAbout(props: {
 }) {
   return (
     <div className={styles['more-about']}>
-      <MoreAboutButton 
-        currencyFrom={props.currencyFrom} 
-        currencyTo={props.currencyTo} 
-      />
+      <MoreAboutButton currencyFrom={props.currencyFrom} currencyTo={props.currencyTo} />
       <MoreAboutContent title={props.titleFrom} text={props.textFrom} />
       <MoreAboutContent title={props.titleTo} text={props.textTo} />
     </div>

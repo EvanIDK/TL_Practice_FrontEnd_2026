@@ -1,20 +1,23 @@
 .page-wrapper {
-    background-color: #EBF4FB;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-block-size: 100vh;
+
+  background-color: #ebf4fb;
 }
 
 .app-container {
-    width: 100%;
-    max-width: 1257px;
-    display: flex;
-    margin: 0 auto;
-    padding: 40px 20px;
-    flex-direction: column;
-    align-items: center;
-    background-color: #FFFFFF;
-    border-radius: 30px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  inline-size: 100%;
+  max-inline-size: 1257px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  background-color: #fff;
+  border-radius: 30px;
+}
