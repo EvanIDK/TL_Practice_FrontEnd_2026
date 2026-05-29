@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap';
+
 .wrapper {
   display: flex;
   justify-content: center;
@@ -6,6 +8,8 @@
   min-block-size: 100vh;
 
   background-color: #ebf4fb;
+
+  font-family: Inter, sans-serif;
 }
 
 .container {
@@ -20,4 +24,11 @@
 
   background-color: #fff;
   border-radius: 30px;
+}
+
+.selects {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-block-start: 27px;
 }
