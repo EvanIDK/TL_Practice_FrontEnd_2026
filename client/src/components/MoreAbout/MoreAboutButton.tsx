@@ -1,15 +1,16 @@
 import styles from './MoreAbout.module.scss';
 
 type MoreAboutButtonProps = {
-  from: string;
-  to: string;
-  testId: string
+  currencyFrom: string;
+  currencyTo: string;
+  testId: string;
+  onButtonClick: () => void;
 };
 
-export const MoreAboutButton = ({ from, to, testId }: MoreAboutButtonProps) => {
+export const MoreAboutButton = ({ currencyFrom, currencyTo, testId, onButtonClick }: MoreAboutButtonProps) => {
   return (
-    <button className={styles.button} data-testid={`${testId}-button`}>
-      {from}/{to}: about
+    <button className={styles.button} data-testid={`${testId}-button`} onClick={onButtonClick}>
+      {currencyFrom}/{currencyTo}: about
     </button>
   );
 };
