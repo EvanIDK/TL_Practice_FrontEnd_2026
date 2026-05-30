@@ -14,7 +14,7 @@ type MoreAboutProps = {
 export const MoreAbout = ({ currencyFrom, currencyTo, titleFrom, textFrom, titleTo, textTo }: MoreAboutProps) => {
   return (
     <div className={styles.wrapper} data-testid="more-about">
-      <MoreAboutButton currencyFrom={currencyFrom} currencyTo={currencyTo} testId={"more-about"}/>
+      <MoreAboutButton from={currencyFrom} to={currencyTo} testId={"more-about"}/>
       <MoreAboutContent title={titleFrom} text={textFrom} testId={"more-about-from"}/>
       <MoreAboutContent title={titleTo} text={textTo} testId={"more-about-to"}/>
     </div>

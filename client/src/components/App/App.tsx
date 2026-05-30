@@ -1,8 +1,8 @@
 import styles from './App.module.scss';
 
-import { ConversionHeader } from './components/ConversionHeader/ConversionHeader';
-import { CurrencySelect } from './components/CurrencySelect/CurrencySelect';
-import { MoreAbout } from './components/MoreAbout/MoreAbout';
+import { ConversionHeader } from '../ConversionHeader/ConversionHeader';
+import { CurrencySelect } from '../CurrencySelect/CurrencySelect';
+import { MoreAbout } from '../MoreAbout/MoreAbout';
 
 export const App = () => {
   return (

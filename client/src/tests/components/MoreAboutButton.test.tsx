@@ -4,8 +4,8 @@ import { MoreAboutButton } from '../../components/MoreAbout/MoreAboutButton'
 
 describe('MoreAboutButton', () => {
     const props = {
-        currencyFrom: 'PLN',
-        currencyTo: 'JPY',
+        from: 'PLN',
+        to: 'JPY',
         testId: 'more-about'
     }
     it('render MoreAbout button', () => {
@@ -17,6 +17,6 @@ describe('MoreAboutButton', () => {
     it('show correct text for button', () => {
     render(<MoreAboutButton {...props} />)
 
-    expect(screen.getByTestId(`${props.testId}-button`)).toHaveTextContent(`${props.currencyFrom}/${props.currencyTo}: about`)
+    expect(screen.getByTestId(`${props.testId}-button`)).toHaveTextContent(`${props.from}/${props.to}: about`)
     })
 })
