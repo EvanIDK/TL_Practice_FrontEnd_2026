@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import styles from './CurrencySelect.module.scss';
 
 type CurrencySelectProps = {
@@ -5,7 +6,7 @@ type CurrencySelectProps = {
   currency: string;
 };
 
-export const CurrencySelect = ({ amount, currency }: CurrencySelectProps) => {
+export const CurrencySelect = ({ amount, currency }: CurrencySelectProps): ReactElement => {
   return (
     <div className={styles.wrapper}>
       <input className={styles.input} type="number" defaultValue={amount} name={`amount-${currency}`} />

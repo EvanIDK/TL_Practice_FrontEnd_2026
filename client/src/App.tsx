@@ -1,10 +1,10 @@
 import styles from './App.module.scss';
 
-import { ConversionHeader } from './components/ConversionHeader/ConversionHeader.tsx';
-import { CurrencySelect } from './components/CurrencySelect/CurrencySelect.tsx';
-import { MoreAbout } from './components/MoreAbout/MoreAbout.tsx';
+import { ConversionHeader } from './components/ConversionHeader/ConversionHeader';
+import { CurrencySelect } from './components/CurrencySelect/CurrencySelect';
+import { MoreAbout } from './components/MoreAbout/MoreAbout';
 
-function App() {
+export const App = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -25,5 +25,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
