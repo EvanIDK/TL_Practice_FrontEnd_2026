@@ -6,6 +6,7 @@ import { MoreAbout } from '../../components/MoreAbout/MoreAbout'
 describe('MoreAbout', () => {
 
   const props = {
+    key: '',
     currencyFrom: 'PLN',
     currencyTo: 'JPY',
     titleFrom: 'Polish zloty - PLN - zł',
@@ -41,5 +42,5 @@ describe('MoreAbout', () => {
     expect(screen.queryByTestId('more-about-from-content')).not.toBeInTheDocument()
     expect(screen.queryByTestId('more-about-to-content')).not.toBeInTheDocument()
   })
-  
+
 })

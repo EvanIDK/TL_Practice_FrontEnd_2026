@@ -1,25 +1,43 @@
 import type { ReactElement } from 'react';
 import styles from './CurrencySelect.module.scss';
 
+import { type Currency } from '../../models/currency';
+
 type CurrencySelectProps = {
-  amount: number;
+  amount: string;
   currency: string;
+  testId: string;
+  currenciesList: Currency[]
+  onAmountChange: (value: string) => void,
+  onCurrencyChange: (value: string) => void
 };
 
-export const CurrencySelect = ({ amount, currency }: CurrencySelectProps): ReactElement => {
+export const CurrencySelect = ({ 
+  amount, 
+  currency, 
+  testId,
+  currenciesList,
+  onAmountChange,
+  onCurrencyChange,
+  }: CurrencySelectProps): ReactElement => {
   return (
     <div className={styles.wrapper}>
-      <input className={styles.input} type="number" defaultValue={amount} name={`amount-${currency}`} />
-      <select
+      <input data-testid={`${testId}-input`}
+        className={styles.input}
+        type="number"
+        value={amount}
+        onChange={(event) => onAmountChange(event.target.value)}
+      />
+      <select data-testid={`${testId}-select`}
         className={styles.select}
-        name={`currency-${currency}`}
-        id={`currency-${currency}`}
-        defaultValue={currency}
+        value={currency}
+        onChange={(event) => onCurrencyChange(event.target.value)}
       >
-        <option value="USD">USD</option>
-        <option value="RUB">RUB</option>
-        <option value="JPY">JPY</option>
-        <option value="PLN">PLN</option>
+        {currenciesList.map((currency) => (
+          <option key={currency.code} value={currency.code}> 
+            {currency.code}     
+          </option>
+        ))}
       </select>
     </div>
   );
