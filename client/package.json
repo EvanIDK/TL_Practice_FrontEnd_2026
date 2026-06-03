@@ -10,7 +10,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "run-s lint:*",
-    "lint:eslint": "eslint src --ext .ts,.tsx",
+    "lint:eslint": "eslint src",
     "lint:stylelint": "stylelint src/**/*.scss",
     "lint-fix": "run-s lint-fix:*",
     "lint-fix:eslint": "npm run lint:eslint -- --fix",
@@ -22,7 +22,7 @@
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
+    "@eslint/js": "^9.22.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -31,7 +31,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^10.4.0",
+    "eslint": "9.22.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react": "^7.37.5",
