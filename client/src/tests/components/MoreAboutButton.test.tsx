@@ -8,6 +8,7 @@ describe('MoreAboutButton', () => {
         to: 'JPY',
         testId: 'more-about'
     }
+    
     it('render MoreAbout button', () => {
         render(<MoreAboutButton {...props} />)
 
