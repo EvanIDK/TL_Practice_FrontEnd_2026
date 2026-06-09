@@ -1,72 +1,28 @@
-import { useState } from 'react';
-
 import styles from './App.module.scss';
 
 import { ConversionHeader } from '../ConversionHeader/ConversionHeader';
 import { CurrencySelect } from '../CurrencySelect/CurrencySelect';
 import { MoreAbout } from '../MoreAbout/MoreAbout';
 
-import { type Currency } from '../../models/currency';
-import { type PriceChange} from '../../models/priceChange';
-
-import currenciesJson from '../../mocks/currencies.json';
-import priceChangeJson from '../../mocks/priceChanges.json';
-
-const currencies: Currency[] = currenciesJson;
-const priceChanges: Record<string, Record<string, PriceChange>> = priceChangeJson;
+import { useConverter } from '../../hooks/useConverter';
 
 export const App = () => {
-  const [from, setFrom] = useState('PLN');
-  const [to, setTo] = useState('JPY');
-  const [amount, setAmount] = useState('1');
-
-  const roundUp = 3;
+  const {handleFromChange, handleToChange, handleSwap, setAmount, result, from, to, amount, currencies} = useConverter();
 
   const fallBackTitle = 'No title';
   const fallBackText = 'No description'
-
-  const rate = priceChanges[from][to].price;
-  const result = (Number(amount) * rate).toFixed(roundUp);
-
-  const currencyfrom = currencies.find(currencies => currencies.code === from);
-  const currencyto = currencies.find(currencies => currencies.code === to);
-
-  const handleFromChange = (newFrom: string) => {
-    if(newFrom === to) {
-      const fallback = currencies.find((currency) => currency.code !== newFrom);
-      if (fallback) {
-        setTo(fallback.code)
-      }
-    }
-    setFrom(newFrom)
-  }
-
-  const handleToChange = (newTo: string) => {
-    if(newTo === from) {
-      const fallback = currencies.find((currency) => currency.code !== newTo);
-      if (fallback) {
-        setFrom(fallback.code)
-      }
-    }
-    setTo(newTo)
-  }
-
-  const handleSwap = () => {
-    setFrom(to);
-    setTo(from);
-  };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <ConversionHeader 
-          title={`${amount} ${currencyfrom?.name} is`}
-          subtitle={`${result} ${currencyto?.name}`}
+          title={`${amount} ${from.name} is`}
+          subtitle={`${result} ${to.name}`}
         />
         <div className={styles.selects}>
           <CurrencySelect 
             amount={amount} 
-            currency={from}
+            currency={from.code}
             testId={'currency-select-from'}
             currenciesList={currencies}
             onAmountChange={(value) => setAmount(value)} 
@@ -75,7 +31,7 @@ export const App = () => {
           <button className={styles.swap} onClick={handleSwap}>swap</button>
           <CurrencySelect 
             amount={result} 
-            currency={to} 
+            currency={to.code} 
             testId={'currency-select-to'}
             currenciesList={currencies}
             onAmountChange={(value) => setAmount(value)} 
@@ -83,13 +39,13 @@ export const App = () => {
           />
         </div>
         <MoreAbout
-          key={`${from}${to}`} //key нужен здесь для пересоздания moreabout при смене валют в селекте. В селекте поменяли валюту - key изменился, соответственно moreabout создасться заново и isVisible снова false. 
-          currencyFrom={from}
-          currencyTo={to}
-          titleFrom={currencyfrom?.name ?? fallBackTitle}
-          textFrom={currencyfrom?.description ?? fallBackText}
-          titleTo={currencyto?.name ?? fallBackTitle}
-          textTo={currencyto?.description ?? fallBackText}
+          key={`${from.code}${to.code}`} //key нужен здесь для пересоздания moreabout при смене валют в селекте. В селекте поменяли валюту - key изменился, соответственно moreabout создасться заново и isVisible снова false. 
+          currencyFrom={from.code}
+          currencyTo={to.code}
+          titleFrom={from.name ?? fallBackTitle}
+          textFrom={from.description ?? fallBackText}
+          titleTo={to.name ?? fallBackTitle}
+          textTo={to.description ?? fallBackText}
         />
       </div>
     </div>

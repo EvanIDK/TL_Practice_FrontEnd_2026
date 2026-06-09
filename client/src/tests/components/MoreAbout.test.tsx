@@ -6,7 +6,7 @@ import { MoreAbout } from '../../components/MoreAbout/MoreAbout'
 describe('MoreAbout', () => {
 
   const props = {
-    key: '',
+  key: '',
     currencyFrom: 'PLN',
     currencyTo: 'JPY',
     titleFrom: 'Polish zloty - PLN - zł',

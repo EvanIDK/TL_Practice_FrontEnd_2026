@@ -8,7 +8,7 @@ describe('MoreAboutButton', () => {
     currencyTo: 'JPY',
     testId: 'more-about',
     onButtonClick: () => {}
-}
+    }
     
     it('render MoreAbout button', () => {
         render(<MoreAboutButton {...props} />)
