@@ -1,24 +1,26 @@
-import { render, screen } from '@testing-library/react'
-import { describe, it, expect } from 'vitest'
-import { MoreAboutButton } from '../../components/MoreAbout/MoreAboutButton'
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import { MoreAboutButton } from '../../components/MoreAbout/MoreAboutButton';
 
 describe('MoreAboutButton', () => {
-    const props = {
+  const props = {
     currencyFrom: 'PLN',
     currencyTo: 'JPY',
     testId: 'more-about',
     onButtonClick: () => {}
-    }
-    
-    it('render MoreAbout button', () => {
-        render(<MoreAboutButton {...props} />)
+  };
 
-        expect(screen.getByTestId(`${props.testId}-button`)).toBeInTheDocument()
-    })
+  it('render MoreAbout button', () => {
+    render(<MoreAboutButton {...props} />);
 
-    it('show correct text for button', () => {
-    render(<MoreAboutButton {...props} />)
+    expect(screen.getByTestId(`${props.testId}-button`)).toBeInTheDocument();
+  });
 
-    expect(screen.getByTestId(`${props.testId}-button`)).toHaveTextContent(`${props.currencyFrom}/${props.currencyTo}: about`)
-    })
-})
+  it('show correct text for button', () => {
+    render(<MoreAboutButton {...props} />);
+
+    expect(screen.getByTestId(`${props.testId}-button`)).toHaveTextContent(
+      `${props.currencyFrom}/${props.currencyTo}: about`
+    );
+  });
+});
