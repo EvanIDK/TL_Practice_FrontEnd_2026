@@ -4,24 +4,50 @@ import { ConversionHeader } from '../ConversionHeader/ConversionHeader';
 import { CurrencySelect } from '../CurrencySelect/CurrencySelect';
 import { MoreAbout } from '../MoreAbout/MoreAbout';
 
+import { useConverter } from '../../hooks/useConverter';
+
+const fallBackTitle = 'No title';
+const fallBackText = 'No description';
+
 export const App = () => {
+  const { handleFromChange, handleToChange, handleSwap, setAmount, result, from, to, amount, currencies, priceChanges } =
+    useConverter();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <ConversionHeader />
+        <ConversionHeader title={`${amount} ${from.name} is`} subtitle={`${result} ${to.name}`} date={priceChanges[from.code][to.code].dateTime}/>
         <div className={styles.selects}>
-          <CurrencySelect amount={1} currency="PLN" />
-          <CurrencySelect amount={1} currency="JPY" />
+          <CurrencySelect
+            amount={amount}
+            currency={from.code}
+            testId={'currency-select-from'}
+            currenciesList={currencies}
+            onAmountChange={(value) => setAmount(value)}
+            onCurrencyChange={handleFromChange}
+          />
+          <button className={styles.swap} onClick={handleSwap}>
+            swap
+          </button>
+          <CurrencySelect
+            amount={result}
+            currency={to.code}
+            testId={'currency-select-to'}
+            currenciesList={currencies}
+            onAmountChange={(value) => setAmount(value)}
+            onCurrencyChange={handleToChange}
+          />
         </div>
         <MoreAbout
-          currencyFrom="PLN"
-          currencyTo="JPY"
-          titleFrom="Polish zloty - PLN - zł"
-          textFrom="This is the official currency and legal tender of Poland. It is subdivided into 100 grosz-y (gr). It is the most traded currency in Central and Eastern Europe and ranks 21st most-traded in the foreign exchange market."
-          titleTo="Japanese yen - JPY - ¥"
-          textTo="The yen is the official currency of Japan. It is the third-most traded currency in the foreign exchange market, after the United States dollar and the euro. It is also widely used as a third reserve currency after the US dollar and the euro."
+          key={`${from.code}${to.code}`} //key нужен здесь для пересоздания moreabout при смене валют в селекте. В селекте поменяли валюту - key изменился, соответственно moreabout создасться заново и isVisible снова false.
+          currencyFrom={from.code}
+          currencyTo={to.code}
+          titleFrom={from.name ?? fallBackTitle}
+          textFrom={from.description ?? fallBackText}
+          titleTo={to.name ?? fallBackTitle}
+          textTo={to.description ?? fallBackText}
         />
       </div>
     </div>
   );
-}
+};
